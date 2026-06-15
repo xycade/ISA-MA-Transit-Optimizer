@@ -1074,7 +1074,7 @@ def op_smart_split_route(ind, **kwargs):
 
 
 # --- 6. Main Process ---
-def run_genetic_algorithm(G, od_df, sp_len, sp, initial_solution_path, stop_nodes_set, algorithm_mode='MA-RL',
+def run_genetic_algorithm(G, od_df, sp_len, sp, initial_solution_path, stop_nodes_set, algorithm_mode='ISA-MA',
                           network_name='mandl'):
     output_path = os.path.join(OUTPUT_PATH_BASE, network_name, algorithm_mode)
     if not os.path.exists(output_path): os.makedirs(output_path)
@@ -1133,10 +1133,10 @@ def run_genetic_algorithm(G, od_df, sp_len, sp, initial_solution_path, stop_node
 
     operator_kwargs = {'G': G, 'od_df': od_df, 'sp_len': sp_len, 'sp': sp, 'stop_nodes_set': stop_nodes_set}
     rl_tuner = None
-    if algorithm_mode == 'MA-RL':
+    if algorithm_mode == 'ISA-MA':
         rl_tuner = Advanced_RL_Tuner(actions=action_names, stagnation_threshold=RL_STAGNATION_THRESHOLD,
                                      temperature=0.1)
-        print("Enabled [Advanced MA-RL Mode].")
+        print("Enabled [Advanced ISA-MA Mode].")
 
     operator_stats = None
     if algorithm_mode == 'MA-Random':
@@ -1193,7 +1193,7 @@ def run_genetic_algorithm(G, od_df, sp_len, sp, initial_solution_path, stop_node
                 if algorithm_mode == 'GA':
                     next_population.extend(children_to_process)
                 else:
-                    if algorithm_mode == 'MA-RL' and rl_tuner:
+                    if algorithm_mode == 'ISA-MA' and rl_tuner:
                         current_state = rl_tuner.get_state(best_fitness, fitnesses)
                         if gen > 0 and learning_records:
                             next_state_for_update = current_state
@@ -1254,7 +1254,7 @@ def run_genetic_algorithm(G, od_df, sp_len, sp, initial_solution_path, stop_node
                         next_population.extend(refined_children)
 
                 population = next_population[:POP_SIZE]
-                if algorithm_mode == 'MA-RL' and rl_tuner:
+                if algorithm_mode == 'ISA-MA' and rl_tuner:
                     if gen in [10, 60, 100, MAX_GENERATIONS-1]:
                         q_table_snapshots[gen] = copy.deepcopy(rl_tuner.q_table)
                 if rl_tuner: rl_tuner.decay_epsilon()
@@ -1508,10 +1508,10 @@ def main():
     print("  1. GA (Standard Genetic Algorithm)")
     print("  2. MA-Random (Memetic Algorithm with Random Local Search and Performance Analysis)")
     print("  3. MA-Fixed (Memetic Algorithm with Fixed-Policy Local Search)")
-    print("  4. MA-RL (【Recommended】Advanced Memetic Algorithm with Reinforcement Learning)")
+    print("  4. ISA-MA (Interpretable State-Aware Memetic Algorithm)")
     print("======================================================")
 
-    mode_map = {'1': 'GA', '2': 'MA-Random', '3': 'MA-Fixed', '4': 'MA-RL'}
+    mode_map = {'1': 'GA', '2': 'MA-Random', '3': 'MA-Fixed', '4': 'ISA-MA'}
     algo_choice = ''
     while algo_choice not in mode_map:
         algo_choice = input("Enter algorithm option (1-4): ")
