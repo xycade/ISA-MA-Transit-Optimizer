@@ -16,21 +16,22 @@ This repository contains the official implementation, benchmark datasets, and ra
   pip install pandas networkx matplotlib numpy scipy tqdm seaborn
 
 ## Project Structure
-src/: Directory containing all source code (ISA_MA.py, MA_AOS.py, Statistical_Analysis.py, etc.).
-data/: Directory containing benchmark datasets (mandl/, mumford0/).
-results/: Directory containing raw run-level objective values (30 independent runs) and generated plots.
-reproduce_results.py: The master guide script for reproducing the paper's tables and figures.  
+·src/: Directory containing all source code (ISA-MA.py, MA-AOS.py, Statistical_Analysis.py, etc.).
+·data/: Directory containing benchmark datasets (mandl/, mumford0/).
+·results/: Directory containing the pre-computed run-level objective values (30 independent runs) required for Table 6. Note: Dynamically generated plots and correlation CSVs will also be saved here when running the validation scripts.
+·reproduce_results.py: The master guide script for reproducing the paper's tables and figures.
 
 ## Quick Start
 1. Ensure your dataset folders are placed in the data/ directory.
 2. To see all available reproduction commands, run the master script:
 -  python reproduce_results.py
 3. To run the main algorithm directly, use:
--  python src/ISA_MA.py
+-  python src/ISA-MA.py
 
 Follow the interactive prompt:
-Select your benchmark network (1: Mandl, 2: Mumford0).
-Choose the algorithm mode (4: ISA-MA).
+·Select your benchmark network (1: Mandl, 2: Mumford0).
+·Choose the algorithm mode (4: ISA-MA).
+
 ## Reproducibility
 To address peer review feedback and ensure absolute scientific transparency:
 - **Bug Fixes:** Path and BASE_DIR logic have been explicitly defined to ensure out-of-the-box execution on any machine.
