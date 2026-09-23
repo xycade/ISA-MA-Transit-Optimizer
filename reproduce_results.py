@@ -1,14 +1,13 @@
 import os
 import sys
 
-
 def main():
     print("=========================================================")
     print("     ISA-MA Reproducibility & Evaluation Guide           ")
     print("=========================================================")
     print("Welcome! This script outlines how to reproduce the tables, ")
     print("figures, and statistical tests presented in the manuscript.\n")
-
+    
     print("⚠️  NOTE: Running full 30-run evaluations on the Mumford0 ")
     print("network may take several hours. For immediate verification, ")
     print("we have provided the raw run-level output data in the ")
@@ -25,8 +24,8 @@ def main():
     print(" 2. Re-run Algorithms (ISA-MA & MA-AOS Baseline)")
     print("---------------------------------------------------------")
     print("To run the optimization algorithms from scratch:")
-    print(" -> Command: python src/ISA_MA.py")
-    print(" -> Command: python src/MA_AOS.py\n")
+    print(" -> Command: python src/ISA-MA.py")
+    print(" -> Command: python src/MA-AOS.py\n")
 
     print("---------------------------------------------------------")
     print(" 3. Reproduce Figure 5 & Appendix E (Continuous Benchmarks)")
@@ -44,7 +43,6 @@ def main():
     print("=========================================================")
     print("All generated plots and CSVs will be saved to the '/results' folder.")
     print("=========================================================")
-
 
 if __name__ == "__main__":
     main()
