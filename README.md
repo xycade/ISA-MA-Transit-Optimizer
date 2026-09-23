@@ -33,8 +33,8 @@ Select your benchmark network (1: Mandl, 2: Mumford0).
 Choose the algorithm mode (4: ISA-MA).
 ## Reproducibility
 To address peer review feedback and ensure absolute scientific transparency:
-- **Bug Fixes: Path and BASE_DIR logic have been explicitly defined to ensure out-of-the-box execution on any machine.
-- **Statistics Verification (Table 6): Run python src/Statistical_Analysis.py to instantly calculate and verify the exact p-values (Mann-Whitney U), Effect Sizes (r), and 95% Confidence Intervals reported in the manuscript using the raw data in the results/ folder.
-- **Proxy Validation (Appendix D): Run python src/validate_proxy_mandl.py to reproduce the phenotypic vs. genotypic Jaccard distance correlation analysis.
+- **Bug Fixes:** Path and BASE_DIR logic have been explicitly defined to ensure out-of-the-box execution on any machine.
+- **Statistics Verification (Table 6):** Run python src/Statistical_Analysis.py to instantly calculate and verify the exact p-values (Mann-Whitney U), Effect Sizes (r), and 95% Confidence Intervals reported in the manuscript using the raw data in the results/ folder.
+- **Proxy Validation (Appendix D):** Run python src/validate_proxy_mandl.py to reproduce the phenotypic vs. genotypic Jaccard distance correlation analysis.
 ## Contact
 For any questions regarding the implementation, please contact the author at: xyc1477@163.com
